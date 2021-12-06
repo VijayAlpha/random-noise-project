@@ -1,9 +1,10 @@
 const fs = require("fs");
+const { exec } = require("child_process");
 const path = require("path");
 const data = require("./data");
 
 const main = () => {
-  // to remove the prev files in the folder
+  //to remove the prev files in the folder
   const directory = "images";
   const filenames = fs.readdirSync(directory);
 
@@ -24,6 +25,22 @@ const main = () => {
     fs.writeFileSync(`images/image-${i}.` + ext, buffer);
   });
   console.log("Converting Data to PNG process is Done");
+
+  const videofiles = fs.readdirSync("videos");
+
+  const cmd = `ffmpeg -framerate 10 -i ./images/image-%d.png ./videos/waves-${
+    videofiles.length + 1
+  }.mp4`;
+
+  exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    // the *entire* stdout and stderr (buffered)
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
 };
 
 main();
