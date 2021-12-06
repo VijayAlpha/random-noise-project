@@ -1,10 +1,11 @@
 const fs = require("fs");
 const { exec } = require("child_process");
 const path = require("path");
-const data = require("./data");
+//const pngData = require("./data");
 
-const main = () => {
+const convertToPNG = (data) => {
   //to remove the prev files in the folder
+  //data = data || pngData;
   const directory = "images";
   const filenames = fs.readdirSync(directory);
 
@@ -38,9 +39,14 @@ const main = () => {
       return;
     }
     // the *entire* stdout and stderr (buffered)
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
+    // console.log(`stdout: ${stdout}`);
+    // console.log(`stderr: ${stderr}`);
+    console.log("Video Created");
   });
+
+  return true;
 };
 
-main();
+module.exports = convertToPNG;
+
+//main();
