@@ -30,24 +30,21 @@ const main = () => {
   //     { path: "./images/image-7.png", loop: secondsToShowEachImage },
   //     { path: "./images/image-8.png", loop: secondsToShowEachImage },
   //   ];
-  var images = [
-    "./images/image-0.png",
-    "./images/image-1.png",
-    "./images/image-2.png",
-    "./images/image-3.png",
-    "./images/image-4.png",
-  ];
+  var images = [];
+
+  for (i = 0; i < 35; i++) {
+    images.push(`./images/image-${i}.png`);
+  }
+
+  console.log("Array : ", images);
 
   var videoOptions = {
-    fps: 25,
-    loop: 5, // seconds
-    transition: true,
-    transitionDuration: 1, // seconds
+    fps: 35,
+    loop: 0.1,
+    transition: false,
     videoBitrate: 1024,
     videoCodec: "libx264",
     size: "640x?",
-    audioBitrate: "128k",
-    audioChannels: 2,
     format: "mp4",
     pixelFormat: "yuv420p",
   };

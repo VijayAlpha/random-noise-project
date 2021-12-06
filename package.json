@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "make-video": "ffmpeg -framerate 10 -i image-%d.png ../videos/output.mp4"
   },
   "author": "",
   "license": "ISC",
