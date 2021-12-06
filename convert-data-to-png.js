@@ -4,19 +4,15 @@ const data = require("./data");
 
 const main = () => {
   // to remove the prev files in the folder
-  const directory = "./images";
+  const directory = "images";
+  const filenames = fs.readdirSync(directory);
 
-  fs.readdir(directory, (err, files) => {
-    if (err) throw err;
-
-    for (const file of files) {
-      fs.unlink(path.join(directory, file), (err) => {
-        if (err) throw err;
-      });
-    }
-
-    console.log("Files Deleted:");
+  filenames.forEach((file) => {
+    fs.unlink(path.join(directory, file), (err) => {
+      if (err) throw err;
+    });
   });
+  console.log("Images Deleted");
 
   data.forEach((el, i) => {
     var matches = el.match(/^data:.+\/(.+);base64,(.*)$/);
