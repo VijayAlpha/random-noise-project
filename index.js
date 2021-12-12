@@ -6,20 +6,20 @@ var simplex = new SimplexNoise(),
   t = 0;
 
 var size = canvas.width;
-const change_1 = Math.round(Math.random() * 600);
-const change_2 = Math.round(Math.random() * 785);
-const change_3 = Math.round(Math.random() * 100);
+// const change_1 = Math.round(Math.random() * 600);
+// const change_2 = Math.round(Math.random() * 785);
+// const change_3 = Math.round(Math.random() * 100);
 
 window.setInterval(function () {
   for (var x = 0; x < size; x++) {
     for (var y = 0; y < size; y++) {
       // this is for shape
-      var r = simplex.noise3D(x / 216, y / 20, t / 52) * 0.9 + 0.5;
-      var g = simplex.noise3D(x / 219, y / 78, t / 52) * 0.9 + 0.5;
+      var r = simplex.noise3D(x / 172, y / 26, t/16) * 0.5 + 0.5;
+        var g = simplex.noise3D(x / 172, y / 28, t/16) * 0.5 + 0.5;
       // this is for color
-      data[(x + y * size) * 4 + 0] = r * change_1;
-      data[(x + y * size) * 4 + 1] = (g + r) * change_2;
-      data[(x + y * size) * 4 + 2] = 0;
+      data[(x + y * size) * 4 + 0] = g * 255;
+      data[(x + y * size) * 4 + 1] = g * 204;
+      data[(x + y * size) * 4 + 2] = 20;
       data[(x + y * size) * 4 + 3] = 255;
     }
   }
@@ -58,6 +58,6 @@ setTimeout(function () {
       pngData: thePNGDataURLs,
     })
     .then(function (response) {
-      location.assign("/");
+      console.log(response);
     });
 }, 10000);
