@@ -14,12 +14,12 @@ window.setInterval(function () {
   for (var x = 0; x < size; x++) {
     for (var y = 0; y < size; y++) {
       // this is for shape
-      var r = simplex.noise3D(x / 172, y / 26, t/16) * 0.5 + 0.5;
-        var g = simplex.noise3D(x / 172, y / 28, t/16) * 0.5 + 0.5;
+      var r = simplex.noise3D(x / 172, y / 26, t / 16) * 0.5 + 0.5;
+      var g = simplex.noise3D(x / 172, y / 28, t / 16) * 0.5 + 0.5;
       // this is for color
       data[(x + y * size) * 4 + 0] = g * 255;
-      data[(x + y * size) * 4 + 1] = g * 204;
-      data[(x + y * size) * 4 + 2] = 20;
+      data[(x + y * size) * 4 + 1] =  0;
+      data[(x + y * size) * 4 + 2] = g * 252;
       data[(x + y * size) * 4 + 3] = 255;
     }
   }
@@ -58,6 +58,6 @@ setTimeout(function () {
       pngData: thePNGDataURLs,
     })
     .then(function (response) {
-      console.log(response);
+      location.assign("/white");
     });
 }, 10000);
